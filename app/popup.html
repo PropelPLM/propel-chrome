@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- build:css styles/popup-vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/main.css -->
+    <link href="styles/main.css" rel="stylesheet">
+    <link href="styles/salesforce-lightning-design-system.min.css" rel="stylesheet">
+    <!-- endbuild -->
+  </head>
+  <body>
+    <div class="demo-only slds-is-absolute" style="height:4rem;width:100%;" id="happyToast">
+      <div class="slds-notify_container">
+        <div class="slds-notify slds-notify_toast slds-theme_success" role="status" style="min-width: 10rem; display:none">
+          <span class="slds-assistive-text">success</span>
+          <span class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+          </span>
+          <div class="slds-notify__content">
+            <h2 class="slds-text-heading_small" id="responseMessage">Successfully created attachment to <a href="#" id="itemAttached"></a>!
+               </h2>
+          </div>
+          <div class="slds-notify__close">
+            <button class="slds-button slds-button_icon slds-button_icon-inverse close" title="Close">
+              <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                <use xlink:href="/sf-assets/utility-sprite/svg/symbols.svg#close"></use>
+              </svg>
+              <span class="slds-assistive-text">Close</span>
+            </button>
+          </div>
+        </div>
+        <div class="slds-notify slds-notify_toast slds-theme_error" role="status" style="min-width: 10rem; display:none">
+          <span class="slds-assistive-text">error</span>
+          <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+            <svg class="slds-icon slds-icon_small" aria-hidden="true">
+              <use xlink:href="/sf-assets/utility-sprite/svg/symbols.svg#error"></use>
+            </svg>
+          </span>
+          <div class="slds-notify__content">
+            <h2 class="slds-text-heading_small" id="errorMessage">Can’t save lead “Sally Wong” because
+              <a href="javascript:void(0);">another lead</a> has the same name.</h2>
+          </div>
+          <div class="slds-notify__close">
+            <button class="slds-button slds-button_icon slds-button_icon-inverse close" title="Close">
+              <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                <use xlink:href="/sf-assets/utility-sprite/svg/symbols.svg#close"></use>
+              </svg>
+              <span class="slds-assistive-text">Close</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <article class="slds-card">
+      <div class="slds-spinner_container" style="display:none;">
+        <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+          <span class="slds-assistive-text">Loading</span>
+          <div class="slds-spinner__dot-a"></div>
+          <div class="slds-spinner__dot-b"></div>
+        </div>
+      </div>
+      <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+          <div class="slds-media__figure">
+            <span class="slds-icon_container" title="Propel">
+              <img src="images/spinner-trans.png" style="width:25px;height:25px;">
+            </span>
+          </div>
+          <div class="slds-media__body">
+            <h2 class="slds-card__header-title">
+              <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Propel">
+                <span>Propel</span> for Chrome
+              </a>
+            </h2>
+          </div>
+        </header>
+      </div>
+      <div class="slds-card__body slds-card__body_inner">
+        <div class="slds-form" id="loginCard">
+          <div class="slds-form-element slds-form-element_stacked">
+            <button class="slds-button slds-button_brand slds-align_absolute-center" id="loginButton">Login to Propel</button>
+          </div>
+        </div>
+        <div class="slds-form" id="attachmentCard">
+          <div class="slds-form-element slds-form-element_stacked">
+            <label class="slds-form-element__label" for="text-input-id-1">
+              <abbr class="slds-required" title="required">* </abbr>Item Number</label>
+            <div class="slds-form-element__control">
+              <input type="text" id="itemNumber" placeholder="" required="" class="slds-input" autofocus/>
+            </div>
+          </div>
+          <div class="slds-form-element slds-form-element_stacked">
+            <label class="slds-form-element__label" for="text-input-id-1">
+              <abbr class="slds-required" title="required">* </abbr>Attachment Name</label>
+            <div class="slds-form-element__control">
+              <input type="text" id="attachmentName" placeholder="" required="" class="slds-input" />
+            </div>
+          </div>
+          <div class="slds-form-element slds-form-element_stacked">
+            <label class="slds-form-element__label" for="text-input-id-1">
+              <abbr class="slds-required" title="required">* </abbr>Attachment Description</label>
+            <div class="slds-form-element__control">
+              <input type="text" id="attachmentDescription" placeholder="" required="" class="slds-input" />
+            </div>
+          </div>
+          <div class="slds-form-element slds-form-element_stacked">
+            <div class="slds-form-element__control">
+              <div class="slds-checkbox">
+                <input type="checkbox" name="options" id="checkbox-unique-id-72" value="checkbox-unique-id-72" checked="" />
+                <label class="slds-checkbox__label" for="checkbox-unique-id-72">
+                  <span class="slds-checkbox_faux"></span>
+                  <span class="slds-form-element__label">Create new Item if Item doesn't already exist</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="slds-form-element slds-form-element_stacked">
+            <button class="slds-button slds-button_brand" id="sendRequest">Add Doc as Attachment</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+      <!--<div role="status" class="slds-spinner slds-spinner_brand slds-spinner_x-small slds-input__spinner">
+        <span class="slds-assistive-text">Loading</span>
+        <div class="slds-spinner__dot-a"></div>
+        <div class="slds-spinner__dot-b"></div>
+      </div>-->
+
+    <!-- build:js scripts/popup-vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/popup.js -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/jsforce/build/jsforce.min.js"></script>
+    <script src="bower_components/axios/dist/axios.min.js"></script>
+    <script src="scripts/popup.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>

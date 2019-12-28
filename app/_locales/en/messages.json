@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "propel chrome",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Propel Chrome Extension for GDrive",
+    "description": "The description of the application"
+  }
+}

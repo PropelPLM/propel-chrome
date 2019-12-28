@@ -1,0 +1,31 @@
+{
+  "name": "Propel Chrome Extension",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Interface with Google Drive",
+  "icons": {
+    "16": "images/spinner-trans.png",
+    "128": "images/spinner-trans.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+      "libs/polyfill.min.js",
+      "scripts/chromereload.js",
+      "scripts/background.js"
+    ]
+  },
+  "content_scripts": [{
+    "matches": ["https://*/*"],
+    "js":["scripts/content.js"]
+  }],
+  "permissions": ["activeTab", "tabs", "declarativeContent", "storage", "identity", "<all_urls>"],
+  "page_action": {
+    "default_icon": {
+      "19": "images/spinner-trans.png",
+      "38": "images/spinner-trans.png"
+    },
+    "default_title": "propel chrome",
+    "default_popup": "popup.html"
+  }
+}
